@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+
+# Swift Package Manager
+/.build
+/Packages
+.swiftpm/
+Package.resolved
+
+# Xcode
+xcuserdata/
+DerivedData/
+*.xcodeproj
+*.xcworkspace
+
+# User-specific files
+.netrc
+
+# Config files that might contain secrets
+~/.config/lastfm-cli/
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Build artifacts
+*.o
+*.dylib
+*.so
