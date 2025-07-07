@@ -32,9 +32,9 @@
         --text-primary: #e0def4;
         --text-secondary: #c9c7db;
         --bg-primary: #191724;
-        --bg-secondary: #1f1d2e;
-        --bg-tertiary: #26233a;
-        --border-color: #403d52;
+        --bg-secondary: #26233a;
+        --bg-tertiary: #403d52;
+        --border-color: #524f67;
         --code-bg: #1f1d2e;
         
         /* Terminal colors for dark theme */
@@ -390,11 +390,13 @@ body {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
+    color: var(--text-primary);
 }
 
 .command-btn:hover {
     background: var(--bg-primary);
     border-color: var(--border-color);
+    color: var(--text-primary);
 }
 
 .command-btn.active {
