@@ -45,15 +45,15 @@ jobs:
           --hosting-base-path 'LastFMKit'
         
         # Create deployment directory structure
-        mkdir -p deployment/documentation/lastfmkit
+        mkdir -p deployment/LastFMKit
         
         # Copy landing page to root if it exists
         if [ -d "landing-page" ]; then
           cp -r landing-page/* deployment/
         fi
         
-        # Copy documentation
-        cp -r docs-temp/* deployment/documentation/lastfmkit/
+        # Copy documentation to project subdirectory
+        cp -r docs-temp/* deployment/LastFMKit/
         
         # Clean up
         rm -rf docs-temp
