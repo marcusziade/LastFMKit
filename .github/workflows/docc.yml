@@ -1,0 +1,71 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: macos-13
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode_15.1.app
+      
+    - name: Build DocC
+      run: |
+        xcodebuild docbuild \
+          -scheme LastFMKit \
+          -derivedDataPath .build \
+          -destination 'platform=macOS'
+          
+    - name: Process DocC Archive
+      run: |
+        # Find the DocC archive
+        DOCC_ARCHIVE=$(find .build -name "*.doccarchive" -type d | head -1)
+        
+        # Convert to static website
+        $(xcrun --find docc) process-archive \
+          transform-for-static-hosting "$DOCC_ARCHIVE" \
+          --output-path .build/docs \
+          --hosting-base-path LastFMKit/documentation
+          
+    - name: Create Deployment Structure
+      run: |
+        # Create deployment directory
+        mkdir -p .build/deploy
+        
+        # Copy landing page to root (will be created later)
+        if [ -d "landing-page" ]; then
+          cp -r landing-page/* .build/deploy/
+        fi
+        
+        # Create documentation subdirectory
+        mkdir -p .build/deploy/LastFMKit
+        
+        # Copy DocC documentation
+        cp -r .build/docs/* .build/deploy/LastFMKit/
+        
+    - name: Upload Pages Artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: .build/deploy
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v3
