@@ -1,5 +1,17 @@
 # LastFMKit
 
+[![CI](https://github.com/marcusziade/LastFMKit/actions/workflows/ci.yml/badge.svg)](https://github.com/marcusziade/LastFMKit/actions/workflows/ci.yml)
+[![Documentation](https://img.shields.io/badge/docs-docC-blue)](https://marcusziade.github.io/LastFMKit/)
+[![Swift](https://img.shields.io/badge/Swift-5.9+-orange.svg)](https://swift.org)
+[![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swift.org/package-manager)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+[![macOS](https://img.shields.io/badge/macOS-13.0+-blue.svg)](https://developer.apple.com/macos/)
+[![iOS](https://img.shields.io/badge/iOS-16.0+-blue.svg)](https://developer.apple.com/ios/)
+[![tvOS](https://img.shields.io/badge/tvOS-16.0+-blue.svg)](https://developer.apple.com/tvos/)
+[![watchOS](https://img.shields.io/badge/watchOS-9.0+-blue.svg)](https://developer.apple.com/watchos/)
+[![Linux](https://img.shields.io/badge/Linux-compatible-brightgreen.svg)](https://swift.org/download/)
+
 A comprehensive Swift SDK for the Last.fm API, designed with protocol-oriented programming and modern Swift features.
 
 ## Features
