@@ -44,16 +44,17 @@ jobs:
           --output-path docs-temp \
           --hosting-base-path 'LastFMKit'
         
-        # Create deployment directory structure
-        mkdir -p deployment/LastFMKit
+        # Create deployment directory
+        mkdir -p deployment
         
         # Copy landing page to root if it exists
         if [ -d "landing-page" ]; then
           cp -r landing-page/* deployment/
         fi
         
-        # Copy documentation to project subdirectory
-        cp -r docs-temp/* deployment/LastFMKit/
+        # Copy all DocC generated content to deployment root
+        # DocC with hosting-base-path already creates the correct structure
+        cp -r docs-temp/* deployment/
         
         # Clean up
         rm -rf docs-temp
