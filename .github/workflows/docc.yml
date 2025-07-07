@@ -12,68 +12,57 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: macos-13
     
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - id: pages
+      name: Setup Pages
+      uses: actions/configure-pages@v4
     
     - name: Select Xcode
       run: sudo xcode-select -s /Applications/Xcode_15.1.app
       
     - name: Build DocC
       run: |
-        xcodebuild docbuild \
-          -scheme LastFMKit \
-          -derivedDataPath .build \
-          -destination 'platform=macOS'
-          
-    - name: Process DocC Archive
-      run: |
-        # Find the DocC archive
-        DOCC_ARCHIVE=$(find .build -name "*.doccarchive" -type d | head -1)
+        # Build documentation
+        swift package resolve
+        xcodebuild docbuild -scheme LastFMKit -derivedDataPath /tmp/docbuild -destination 'generic/platform=iOS'
         
-        # Convert to static website
+        # Process documentation archive
         $(xcrun --find docc) process-archive \
-          transform-for-static-hosting "$DOCC_ARCHIVE" \
-          --output-path .build/docs \
-          --hosting-base-path LastFMKit
-          
-    - name: Create Deployment Structure
-      run: |
-        # Create deployment directory
-        mkdir -p .build/deploy
+          transform-for-static-hosting /tmp/docbuild/Build/Products/Debug-iphoneos/LastFMKit.doccarchive \
+          --output-path docs-temp \
+          --hosting-base-path 'LastFMKit'
         
-        # Copy landing page to root (will be created later)
+        # Create deployment directory structure
+        mkdir -p deployment/documentation/lastfmkit
+        
+        # Copy landing page to root if it exists
         if [ -d "landing-page" ]; then
-          cp -r landing-page/* .build/deploy/
+          cp -r landing-page/* deployment/
         fi
         
-        # Create documentation subdirectory
-        mkdir -p .build/deploy/documentation
+        # Copy documentation
+        cp -r docs-temp/* deployment/documentation/lastfmkit/
         
-        # Copy DocC documentation
-        cp -r .build/docs/* .build/deploy/documentation/
+        # Clean up
+        rm -rf docs-temp
         
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-      
-    - name: Upload Pages Artifact
+    - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: .build/deploy
+        path: 'deployment'
         
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
+    - id: deployment
+      name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
