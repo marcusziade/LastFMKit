@@ -138,10 +138,17 @@
                     <h3>Choose a command:</h3>
                     <div class="command-buttons">
                         <button class="command-btn active" data-command="artist-info">Artist Info</button>
-                        <button class="command-btn" data-command="user-recent">Recent Tracks</button>
+                        <button class="command-btn" data-command="artist-search">Artist Search</button>
+                        <button class="command-btn" data-command="user-recent">User Recent Tracks</button>
+                        <button class="command-btn" data-command="user-top">User Top Artists</button>
                         <button class="command-btn" data-command="chart-top">Top Charts</button>
                         <button class="command-btn" data-command="album-search">Album Search</button>
                         <button class="command-btn" data-command="track-similar">Similar Tracks</button>
+                        <button class="command-btn" data-command="track-search">Track Search</button>
+                        <button class="command-btn" data-command="geo-top">Geo Top Artists</button>
+                        <button class="command-btn" data-command="tag-info">Tag Info</button>
+                        <button class="command-btn" data-command="my-profile">My Profile</button>
+                        <button class="command-btn" data-command="config">Config</button>
                     </div>
                 </div>
                 
@@ -283,6 +290,139 @@
 5. <span class="track">Dream On</span>
    by <span class="artist">Aerosmith</span>
    Match: <span class="number">91.7%</span></span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="artist-search">
+                                <pre><code><span class="prompt">$</span> lastfm artist search "Daft Punk"
+
+<span class="output">🔍 Artist Search Results
+
+1. <span class="highlight">Daft Punk</span>
+   Listeners: <span class="number">4,521,987</span>
+   🔗 https://www.last.fm/music/Daft+Punk
+
+2. <span class="highlight">Daft Punk Tribute</span>
+   Listeners: <span class="number">12,543</span>
+   🔗 https://www.last.fm/music/Daft+Punk+Tribute
+
+3. <span class="highlight">Daft Punk vs. Stardust</span>
+   Listeners: <span class="number">8,234</span>
+   🔗 https://www.last.fm/music/Daft+Punk+vs.+Stardust</span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="user-top">
+                                <pre><code><span class="prompt">$</span> lastfm user top-artists "rj" --period 3month
+
+<span class="output">🎤 Top Artists for <span class="highlight">rj</span> (3 months)
+
+1. <span class="artist">Tame Impala</span>
+   Playcount: <span class="number">847</span> plays
+   
+2. <span class="artist">Mac DeMarco</span>
+   Playcount: <span class="number">692</span> plays
+   
+3. <span class="artist">King Gizzard & The Lizard Wizard</span>
+   Playcount: <span class="number">523</span> plays
+   
+4. <span class="artist">Unknown Mortal Orchestra</span>
+   Playcount: <span class="number">487</span> plays
+   
+5. <span class="artist">Pond</span>
+   Playcount: <span class="number">412</span> plays</span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="track-search">
+                                <pre><code><span class="prompt">$</span> lastfm track search "Around the World"
+
+<span class="output">🎵 Track Search Results
+
+1. <span class="track">Around the World</span>
+   by <span class="artist">Daft Punk</span>
+   Listeners: <span class="number">1,234,567</span>
+
+2. <span class="track">Around the World</span>
+   by <span class="artist">Red Hot Chili Peppers</span>
+   Listeners: <span class="number">987,654</span>
+
+3. <span class="track">Around the World (La La La La La)</span>
+   by <span class="artist">ATC</span>
+   Listeners: <span class="number">543,210</span></span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="geo-top">
+                                <pre><code><span class="prompt">$</span> lastfm geo top-artists "Sweden" --limit 5
+
+<span class="output">🌍 Top Artists in <span class="highlight">Sweden</span>
+
+1. <span class="artist">The Weeknd</span>
+   Listeners: <span class="number">234,567</span>
+   
+2. <span class="artist">Taylor Swift</span>
+   Listeners: <span class="number">198,765</span>
+   
+3. <span class="artist">Veronica Maggio</span>
+   Listeners: <span class="number">167,890</span>
+   
+4. <span class="artist">Kent</span>
+   Listeners: <span class="number">145,678</span>
+   
+5. <span class="artist">Robyn</span>
+   Listeners: <span class="number">134,567</span></span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="tag-info">
+                                <pre><code><span class="prompt">$</span> lastfm tag info "synthwave"
+
+<span class="output">🏷️  Tag: <span class="highlight">synthwave</span>
+
+📊 Statistics:
+   Reach: <span class="number">234,567</span>
+   Total Uses: <span class="number">1,234,567</span>
+
+📝 Description:
+   Synthwave is a genre of electronic music influenced
+   by 1980s film soundtracks and video games. Using 
+   synthesizers, the genre evokes nostalgia while
+   creating a retro-futuristic atmosphere.
+
+🔗 Wiki: https://www.last.fm/tag/synthwave</span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="my-profile">
+                                <pre><code><span class="prompt">$</span> lastfm my profile
+
+<span class="output">👤 Your Profile
+
+<span class="highlight">john_doe</span>
+🎵 Total Scrobbles: <span class="number">45,678</span>
+📅 Member Since: May 15, 2015
+🌍 Country: United States
+
+📊 This Week:
+   Artists: <span class="number">23</span>
+   Albums: <span class="number">18</span>
+   Tracks: <span class="number">156</span>
+   
+🔗 Profile: https://www.last.fm/user/john_doe</span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="config">
+                                <pre><code><span class="prompt">$</span> lastfm config show
+
+<span class="output">⚙️  Configuration
+
+📁 Config file: ~/.config/lastfm/config.json
+
+<span class="highlight">API Settings:</span>
+   API Key: ••••••••••••••••••••••••••••••••
+   Username: john_doe
+   
+<span class="highlight">Display Settings:</span>
+   Default Limit: 20
+   Date Format: relative
+   Output Format: formatted
+   
+To update: lastfm config set &lt;key&gt; &lt;value&gt;</span></code></pre>
                             </div>
                         </div>
                     </div>

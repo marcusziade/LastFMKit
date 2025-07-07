@@ -1,0 +1,8 @@
+# Linguist overrides - hide landing page files from language statistics
+landing-page/**/*.html linguist-vendored
+landing-page/**/*.css linguist-vendored
+landing-page/**/*.js linguist-vendored
+
+# Mark generated files
+*.pbxproj linguist-generated
+.build/ linguist-generated

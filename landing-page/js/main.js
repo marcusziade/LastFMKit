@@ -125,28 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Terminal typing effect for first load
-    const terminalContents = document.querySelectorAll('.terminal code');
-    const hasVisited = sessionStorage.getItem('hasVisited');
-    
-    if (!hasVisited && terminalContents.length > 0) {
-        sessionStorage.setItem('hasVisited', 'true');
-        
-        // Store original content
-        const originalContent = terminalContents[0].innerHTML;
-        terminalContents[0].innerHTML = '';
-        
-        // Type out content
-        let index = 0;
-        const typeInterval = setInterval(() => {
-            if (index < originalContent.length) {
-                terminalContents[0].innerHTML = originalContent.substring(0, index + 1);
-                index++;
-            } else {
-                clearInterval(typeInterval);
-            }
-        }, 10);
-    }
+    // Terminal typing effect removed - show content immediately
 });
 
 // Prevent layout shift on page load

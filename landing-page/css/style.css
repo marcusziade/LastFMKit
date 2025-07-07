@@ -7,8 +7,8 @@
     --gradient-end: #F05138;
     
     /* Solarized Light theme (default) */
-    --text-primary: #002b36;
-    --text-secondary: #586e75;
+    --text-primary: #073642;
+    --text-secondary: #657b83;
     --bg-primary: #fdf6e3;
     --bg-secondary: #eee8d5;
     --bg-tertiary: #93a1a1;
@@ -30,7 +30,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --text-primary: #e0def4;
-        --text-secondary: #908caa;
+        --text-secondary: #c9c7db;
         --bg-primary: #191724;
         --bg-secondary: #1f1d2e;
         --bg-tertiary: #26233a;
@@ -221,7 +221,7 @@ body {
 
 .tab-button.active {
     background: var(--terminal-bg);
-    color: white;
+    color: var(--terminal-fg);
 }
 
 .tab-content {
@@ -324,11 +324,12 @@ body {
 }
 
 .feature-card {
-    background: white;
+    background: var(--bg-primary);
     padding: 2rem;
     border-radius: 12px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .feature-card:hover {
@@ -348,6 +349,7 @@ body {
 
 .feature-card p {
     color: var(--text-secondary);
+    opacity: 0.9;
 }
 
 /* CLI Section */
@@ -391,7 +393,7 @@ body {
 }
 
 .command-btn:hover {
-    background: white;
+    background: var(--bg-primary);
     border-color: var(--border-color);
 }
 
@@ -446,10 +448,11 @@ body {
 }
 
 .example-card {
-    background: white;
+    background: var(--bg-primary);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .example-card h3 {
@@ -491,9 +494,10 @@ body {
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: white;
+    background: var(--bg-primary);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .platform-icon {
@@ -545,12 +549,13 @@ body {
     top: 2rem;
     right: 2rem;
     padding: 0.5rem 1rem;
-    background: white;
+    background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.875rem;
     transition: all 0.3s ease;
+    color: var(--text-primary);
 }
 
 .copy-btn:hover {
