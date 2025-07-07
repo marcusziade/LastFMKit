@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LastFMKit - Swift SDK for Last.fm API</title>
+    <meta name="description" content="A comprehensive Swift SDK for the Last.fm API with full async/await support, cross-platform compatibility, and powerful CLI tools.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🎵</span>
+                <span class="brand-text">LastFMKit</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#cli">CLI</a>
+                <a href="#sdk">SDK</a>
+                <a href="#installation">Installation</a>
+                <a href="LastFMKit/documentation/lastfmkit/" class="docs-link">Documentation</a>
+                <a href="https://github.com/marcusziade/LastFMKit" class="github-link">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-background"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Swift SDK for Last.fm API</h1>
+            <p class="hero-subtitle">Complete async/await support • Cross-platform • Powerful CLI tools</p>
+            
+            <div class="hero-actions">
+                <div class="code-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="cli">CLI Quick Start</button>
+                        <button class="tab-button" data-tab="sdk">SDK Quick Start</button>
+                    </div>
+                    
+                    <div class="tab-content active" data-content="cli">
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                <span class="terminal-button red"></span>
+                                <span class="terminal-button yellow"></span>
+                                <span class="terminal-button green"></span>
+                                <span class="terminal-title">Terminal</span>
+                            </div>
+                            <pre><code><span class="comment"># Install via Homebrew</span>
+<span class="prompt">$</span> brew install marcusziade/tap/lastfm-cli
+
+<span class="comment"># Search for artists</span>
+<span class="prompt">$</span> lastfm artist search "The Beatles"
+
+<span class="comment"># Get top tracks</span>
+<span class="prompt">$</span> lastfm chart top-tracks --limit 10</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-content="sdk">
+                        <div class="code-block">
+                            <pre><code class="swift"><span class="keyword">import</span> LastFMKit
+
+<span class="comment">// Create a client</span>
+<span class="keyword">let</span> client = <span class="type">LastFMClient</span>()
+
+<span class="comment">// Search for artists</span>
+<span class="keyword">let</span> results = <span class="keyword">try await</span> client.artist.search(
+    <span class="string">"The Beatles"</span>,
+    limit: <span class="number">10</span>
+)
+
+<span class="comment">// Get user's recent tracks</span>
+<span class="keyword">let</span> recent = <span class="keyword">try await</span> client.user.getRecentTracks(
+    <span class="string">"rj"</span>,
+    limit: <span class="number">50</span>
+)</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Modern Swift</h3>
+                    <p>Built with async/await, Codable, and protocol-oriented design</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Cross-Platform</h3>
+                    <p>macOS, iOS, tvOS, watchOS, and Linux support</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure by Default</h3>
+                    <p>API credentials managed by Cloudflare Worker</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Complete API Coverage</h3>
+                    <p>All Last.fm endpoints with strongly-typed models</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Powerful CLI</h3>
+                    <p>Test every API endpoint from your terminal</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Resilient</h3>
+                    <p>Built-in retry policies and timeout handling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cli" class="cli-section">
+        <div class="container">
+            <h2 class="section-title">Command Line Interface</h2>
+            <p class="section-subtitle">Explore the Last.fm API from your terminal</p>
+            
+            <div class="cli-showcase">
+                <div class="cli-selector">
+                    <h3>Choose a command:</h3>
+                    <div class="command-buttons">
+                        <button class="command-btn active" data-command="artist-info">Artist Info</button>
+                        <button class="command-btn" data-command="user-recent">Recent Tracks</button>
+                        <button class="command-btn" data-command="chart-top">Top Charts</button>
+                        <button class="command-btn" data-command="album-search">Album Search</button>
+                        <button class="command-btn" data-command="track-similar">Similar Tracks</button>
+                    </div>
+                </div>
+                
+                <div class="cli-output">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-button red"></span>
+                            <span class="terminal-button yellow"></span>
+                            <span class="terminal-button green"></span>
+                            <span class="terminal-title">lastfm-cli</span>
+                        </div>
+                        <div class="terminal-content">
+                            <div class="command-output active" data-output="artist-info">
+                                <pre><code><span class="prompt">$</span> lastfm artist info "Radiohead"
+
+<span class="output">🎤 <span class="highlight">Radiohead</span>
+
+📊 Statistics:
+   Listeners: <span class="number">5,436,823</span>
+   Playcount: <span class="number">584,291,456</span>
+
+🏷️  Tags:
+   • alternative
+   • rock
+   • indie
+   • electronic
+   • experimental
+
+📝 Biography:
+   Radiohead are an English rock band formed in Abingdon, 
+   Oxfordshire, in 1985. The band consists of Thom Yorke, 
+   brothers Jonny Greenwood and Colin Greenwood, Ed O'Brien 
+   and Philip Selway...
+
+🔗 Links:
+   Last.fm: https://www.last.fm/music/Radiohead
+   Official: https://radiohead.com</span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="user-recent">
+                                <pre><code><span class="prompt">$</span> lastfm user recent-tracks "rj" --limit 5
+
+<span class="output">🎵 Recent Tracks for <span class="highlight">rj</span>
+
+1. <span class="track">The Less I Know The Better</span>
+   by <span class="artist">Tame Impala</span>
+   from <span class="album">Currents</span>
+   🕐 2 minutes ago
+
+2. <span class="track">Redbone</span>
+   by <span class="artist">Childish Gambino</span>
+   from <span class="album">"Awaken, My Love!"</span>
+   🕐 6 minutes ago
+
+3. <span class="track">Electric Feel</span>
+   by <span class="artist">MGMT</span>
+   from <span class="album">Oracular Spectacular</span>
+   🕐 10 minutes ago
+
+4. <span class="track">Midnight City</span>
+   by <span class="artist">M83</span>
+   from <span class="album">Hurry Up, We're Dreaming</span>
+   🕐 14 minutes ago
+
+5. <span class="track">Feel It All Around</span>
+   by <span class="artist">Washed Out</span>
+   from <span class="album">Life of Leisure</span>
+   🕐 18 minutes ago</span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="chart-top">
+                                <pre><code><span class="prompt">$</span> lastfm chart top-artists --limit 5
+
+<span class="output">📈 Global Top Artists
+
+1. <span class="highlight">Taylor Swift</span>
+   Listeners: <span class="number">5,832,197</span>
+   Playcount: <span class="number">456,234,891</span>
+
+2. <span class="highlight">The Weeknd</span>
+   Listeners: <span class="number">5,234,652</span>
+   Playcount: <span class="number">398,765,234</span>
+
+3. <span class="highlight">Arctic Monkeys</span>
+   Listeners: <span class="number">4,987,234</span>
+   Playcount: <span class="number">376,543,210</span>
+
+4. <span class="highlight">Lana Del Rey</span>
+   Listeners: <span class="number">4,765,432</span>
+   Playcount: <span class="number">356,789,012</span>
+
+5. <span class="highlight">Radiohead</span>
+   Listeners: <span class="number">4,543,210</span>
+   Playcount: <span class="number">334,567,890</span></span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="album-search">
+                                <pre><code><span class="prompt">$</span> lastfm album search "Dark Side" --limit 3
+
+<span class="output">💿 Album Search Results
+
+1. <span class="album">The Dark Side of the Moon</span>
+   by <span class="artist">Pink Floyd</span>
+   🎵 Tracks: 10
+   🏷️  progressive rock, psychedelic rock
+
+2. <span class="album">Dark Side of the Moon</span>
+   by <span class="artist">Mary Fahl</span>
+   🎵 Tracks: 10
+   🏷️  female vocalists, cover
+
+3. <span class="album">Dark Side</span>
+   by <span class="artist">Kelly Clarkson</span>
+   🎵 Tracks: 1
+   🏷️  pop, female vocalists</span></code></pre>
+                            </div>
+                            
+                            <div class="command-output" data-output="track-similar">
+                                <pre><code><span class="prompt">$</span> lastfm track similar "Bohemian Rhapsody" "Queen"
+
+<span class="output">🎵 Similar to <span class="highlight">Bohemian Rhapsody</span> by <span class="highlight">Queen</span>
+
+1. <span class="track">Stairway to Heaven</span>
+   by <span class="artist">Led Zeppelin</span>
+   Match: <span class="number">98.5%</span>
+
+2. <span class="track">Hotel California</span>
+   by <span class="artist">Eagles</span>
+   Match: <span class="number">96.2%</span>
+
+3. <span class="track">Comfortably Numb</span>
+   by <span class="artist">Pink Floyd</span>
+   Match: <span class="number">94.8%</span>
+
+4. <span class="track">November Rain</span>
+   by <span class="artist">Guns N' Roses</span>
+   Match: <span class="number">93.1%</span>
+
+5. <span class="track">Dream On</span>
+   by <span class="artist">Aerosmith</span>
+   Match: <span class="number">91.7%</span></span></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sdk" class="sdk-section">
+        <div class="container">
+            <h2 class="section-title">SDK Usage</h2>
+            <p class="section-subtitle">Clean, modern Swift API with async/await</p>
+            
+            <div class="sdk-examples">
+                <div class="example-card">
+                    <h3>Search & Discovery</h3>
+                    <pre><code class="swift"><span class="comment">// Search for artists</span>
+<span class="keyword">let</span> artists = <span class="keyword">try await</span> client.artist.search(
+    <span class="string">"Daft Punk"</span>,
+    limit: <span class="number">20</span>
+)
+
+<span class="comment">// Get similar artists</span>
+<span class="keyword">let</span> similar = <span class="keyword">try await</span> client.artist.getSimilar(
+    <span class="string">"Daft Punk"</span>,
+    limit: <span class="number">10</span>
+)
+
+<span class="comment">// Search albums</span>
+<span class="keyword">let</span> albums = <span class="keyword">try await</span> client.album.search(
+    <span class="string">"Random Access Memories"</span>
+)</code></pre>
+                </div>
+                
+                <div class="example-card">
+                    <h3>User Data</h3>
+                    <pre><code class="swift"><span class="comment">// Get user profile</span>
+<span class="keyword">let</span> user = <span class="keyword">try await</span> client.user.getInfo(<span class="string">"rj"</span>)
+
+<span class="comment">// Recent tracks</span>
+<span class="keyword">let</span> recent = <span class="keyword">try await</span> client.user.getRecentTracks(
+    <span class="string">"rj"</span>,
+    from: Date().addingTimeInterval(-<span class="number">86400</span>),
+    extended: <span class="keyword">true</span>
+)
+
+<span class="comment">// Top artists</span>
+<span class="keyword">let</span> topArtists = <span class="keyword">try await</span> client.user.getTopArtists(
+    <span class="string">"rj"</span>,
+    period: .overall,
+    limit: <span class="number">50</span>
+)</code></pre>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Charts & Geo</h3>
+                    <pre><code class="swift"><span class="comment">// Global charts</span>
+<span class="keyword">let</span> topTracks = <span class="keyword">try await</span> client.chart.getTopTracks(
+    page: <span class="number">1</span>,
+    limit: <span class="number">100</span>
+)
+
+<span class="comment">// Country-specific</span>
+<span class="keyword">let</span> ukArtists = <span class="keyword">try await</span> client.geo.getTopArtists(
+    country: <span class="string">"United Kingdom"</span>,
+    limit: <span class="number">50</span>
+)
+
+<span class="comment">// Top tags</span>
+<span class="keyword">let</span> tags = <span class="keyword">try await</span> client.chart.getTopTags()</code></pre>
+                </div>
+            </div>
+            
+            <div class="platform-support">
+                <h3>Platform Support</h3>
+                <div class="platforms">
+                    <div class="platform">
+                        <span class="platform-icon">🖥️</span>
+                        <span>macOS 13.0+</span>
+                    </div>
+                    <div class="platform">
+                        <span class="platform-icon">📱</span>
+                        <span>iOS 16.0+</span>
+                    </div>
+                    <div class="platform">
+                        <span class="platform-icon">📺</span>
+                        <span>tvOS 16.0+</span>
+                    </div>
+                    <div class="platform">
+                        <span class="platform-icon">⌚</span>
+                        <span>watchOS 9.0+</span>
+                    </div>
+                    <div class="platform">
+                        <span class="platform-icon">🐧</span>
+                        <span>Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="installation" class="installation">
+        <div class="container">
+            <h2 class="section-title">Installation</h2>
+            
+            <div class="install-options">
+                <div class="install-card">
+                    <h3>📦 Swift Package Manager</h3>
+                    <p>Add to your Package.swift:</p>
+                    <pre><code class="swift">dependencies: [
+    .package(url: <span class="string">"https://github.com/marcusziade/LastFMKit"</span>, from: <span class="string">"1.0.0"</span>)
+]</code></pre>
+                    <button class="copy-btn" data-copy='dependencies: [
+    .package(url: "https://github.com/marcusziade/LastFMKit", from: "1.0.0")
+]'>Copy</button>
+                </div>
+                
+                <div class="install-card">
+                    <h3>🍺 Homebrew (CLI)</h3>
+                    <p>Install the command-line tool:</p>
+                    <pre><code class="bash"><span class="prompt">$</span> brew install marcusziade/tap/lastfm-cli</code></pre>
+                    <button class="copy-btn" data-copy="brew install marcusziade/tap/lastfm-cli">Copy</button>
+                </div>
+                
+                <div class="install-card">
+                    <h3>🔨 Build from Source</h3>
+                    <p>Clone and build locally:</p>
+                    <pre><code class="bash"><span class="prompt">$</span> git clone https://github.com/marcusziade/LastFMKit.git
+<span class="prompt">$</span> cd LastFMKit
+<span class="prompt">$</span> swift build -c release</code></pre>
+                    <button class="copy-btn" data-copy="git clone https://github.com/marcusziade/LastFMKit.git
+cd LastFMKit
+swift build -c release">Copy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LastFMKit</h4>
+                    <p>A comprehensive Swift SDK for the Last.fm API</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="LastFMKit/documentation/lastfmkit/">API Documentation</a></li>
+                        <li><a href="https://github.com/marcusziade/LastFMKit">GitHub Repository</a></li>
+                        <li><a href="https://github.com/marcusziade/LastFMKit/issues">Report Issues</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/marcusziade/LastFMKit/discussions">Discussions</a></li>
+                        <li><a href="https://github.com/marcusziade/LastFMKit/blob/main/CONTRIBUTING.md">Contributing</a></li>
+                        <li><a href="https://github.com/marcusziade/LastFMKit/blob/main/LICENSE">License</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 LastFMKit. Built with Swift and ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
