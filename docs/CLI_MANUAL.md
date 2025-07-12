@@ -57,7 +57,7 @@ lastfm-cli auth status
 **Output:**
 ```
 Authenticated: Yes
-Username: marcusziade
+Username: guitaripod
 ```
 
 ### auth get-session
@@ -966,18 +966,18 @@ Get information about a user.
 
 **Command:**
 ```bash
-lastfm-cli user info "marcusziade"
+lastfm-cli user info "guitaripod"
 ```
 
 **Output:**
 ```
-User: marcusziade
+User: guitaripod
 Real Name: Marcus
 Country: None
 Age: 0
 Playcount: 151060
 Registered: 28 April 2010
-URL: https://www.last.fm/user/marcusziade
+URL: https://www.last.fm/user/guitaripod
 ```
 
 ### user recent-tracks
@@ -986,12 +986,12 @@ Get a user's recent tracks.
 
 **Command:**
 ```bash
-lastfm-cli user recent-tracks "marcusziade" --limit 5
+lastfm-cli user recent-tracks "guitaripod" --limit 5
 ```
 
 **Output:**
 ```
-Recent Tracks for marcusziade:
+Recent Tracks for guitaripod:
 
 1. Bad Seed by Metallica
    Album: Reload
@@ -1020,12 +1020,12 @@ Get a user's top artists.
 
 **Command:**
 ```bash
-lastfm-cli user top-artists "marcusziade" --period 7day --limit 5
+lastfm-cli user top-artists "guitaripod" --period 7day --limit 5
 ```
 
 **Output:**
 ```
-Top Artists for marcusziade (7day):
+Top Artists for guitaripod (7day):
 
 1. Metallica
    Playcount: 22
@@ -1058,12 +1058,12 @@ Get all artists in a user's library.
 
 **Command:**
 ```bash
-lastfm-cli library artists "marcusziade"
+lastfm-cli library artists "guitaripod"
 ```
 
 **Output:**
 ```
-Artists in marcusziade's Library:
+Artists in guitaripod's Library:
 Total: 8782
 Page 1 of 176
 
@@ -1110,12 +1110,12 @@ lastfm-cli my info
 
 **Output:**
 ```
-User: marcusziade
+User: guitaripod
 Real Name: Marcus
 Country: None
 Playcount: 151060
 Registered: 1272469115
-URL: https://www.last.fm/user/marcusziade
+URL: https://www.last.fm/user/guitaripod
 ```
 
 ### my recent-tracks

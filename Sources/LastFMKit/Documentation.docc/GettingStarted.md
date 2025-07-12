@@ -19,7 +19,7 @@ import PackageDescription
 let package = Package(
     name: "MyApp",
     dependencies: [
-        .package(url: "https://github.com/marcusziade/LastFMKit", from: "1.0.0")
+        .package(url: "https://github.com/guitaripod/LastFMKit", from: "1.0.0")
     ],
     targets: [
         .target(
@@ -34,7 +34,7 @@ let package = Package(
 
 1. Open your project in Xcode
 2. Go to File → Add Package Dependencies
-3. Enter the repository URL: `https://github.com/marcusziade/LastFMKit`
+3. Enter the repository URL: `https://github.com/guitaripod/LastFMKit`
 4. Click Add Package
 
 ## Creating Your First Client

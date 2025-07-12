@@ -1,7 +1,7 @@
 # LastFMKit
 
-[![CI](https://github.com/marcusziade/LastFMKit/actions/workflows/ci.yml/badge.svg)](https://github.com/marcusziade/LastFMKit/actions/workflows/ci.yml)
-[![Documentation](https://img.shields.io/badge/docs-docC-blue)](https://marcusziade.github.io/LastFMKit/)
+[![CI](https://github.com/guitaripod/LastFMKit/actions/workflows/ci.yml/badge.svg)](https://github.com/guitaripod/LastFMKit/actions/workflows/ci.yml)
+[![Documentation](https://img.shields.io/badge/docs-docC-blue)](https://guitaripod.github.io/LastFMKit/)
 [![Swift](https://img.shields.io/badge/Swift-5.9+-orange.svg)](https://swift.org)
 [![SPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swift.org/package-manager)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -34,7 +34,7 @@ Add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/marcusziade/LastFMKit", from: "1.0.0")
+    .package(url: "https://github.com/guitaripod/LastFMKit", from: "1.0.0")
 ]
 ```
 
@@ -292,4 +292,4 @@ LastFMKit is available under the MIT license. See the LICENSE file for more info
 
 ## Author
 
-Marcus Ziadé - [@marcusziade](https://github.com/marcusziade)
+Marcus Ziadé - [@guitaripod](https://github.com/guitaripod)

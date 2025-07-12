@@ -21,7 +21,7 @@ Add LastFMKit to your `Package.swift` dependencies:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/marcusziade/LastFMKit", from: "1.0.0")
+    .package(url: "https://github.com/guitaripod/LastFMKit", from: "1.0.0")
 ]
 ```
 
@@ -140,8 +140,8 @@ lastfm geo top-artists "Sweden" --limit 5
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guide](https://github.com/marcusziade/LastFMKit/blob/main/CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guide](https://github.com/guitaripod/LastFMKit/blob/main/CONTRIBUTING.md) for details.
 
 ## License
 
-LastFMKit is available under the MIT license. See the [LICENSE](https://github.com/marcusziade/LastFMKit/blob/main/LICENSE) file for details.
+LastFMKit is available under the MIT license. See the [LICENSE](https://github.com/guitaripod/LastFMKit/blob/main/LICENSE) file for details.
